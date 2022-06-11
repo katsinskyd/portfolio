@@ -1,0 +1,46 @@
+<div class="inner-container">
+    <div *ngIf="!gameStart">
+        hello, here is a little game for you to... play.<br>
+        it's pretty bad and not really fun, I'm just messing around here.<br>
+        stats will be randomly generated (1 - 10) when you click roll.<br>
+        you are allowed to roll <strong>{{ reroll }}</strong> more time<span *ngIf="reroll>1">s</span>.<br>
+        press start when you are satisfied with your stats.<br>
+        if you have no rolls left, the game will automatically begin.<br><br>
+
+        <button (click)="rollStats()" [disabled]="reroll==0">Roll</button><br><br>
+
+        Attack: {{ str }}<br>
+        Defense: {{ def }}<br><br>
+
+        <button (click)="this.gameStart = true;" [disabled]="reroll==5">Start</button>
+    </div>
+
+    <div *ngIf="gameStart">
+        <div class="stats">
+            Level <strong>{{ lvl }}</strong><br>
+            Points until next level: {{ expRemaining }}<br>
+            Health: {{ hp }}<br>
+            Attack: {{ str }}<br>
+            Defense: {{ def }}<br><br>
+            <button (click)="restart()" [disabled]="!gameOver">Restart</button><br>
+        </div>
+
+        <div class="battle">
+            Score: {{ score }}<br>
+            <div *ngIf="!battleTime">
+                You encounter an <strong>enemy!!</strong><br>
+                <button (click)="generateEnemy()" [disabled]="gameOver">Start a Fight!!</button>
+            </div>
+            <div *ngIf="battleTime">
+                The enemy has {{ enemyHP }} health remaining...<br>
+                Enemy Attack: {{ enemyStr }}<br>
+                Enemy Defense: {{ enemyDef }}<br>
+                <span *ngIf="playerTurn">You attack the enemy!</span>
+                <span *ngIf="!playerTurn">The enemy attacks!</span>
+                <br><button (click)="battleTurn()" [disabled]="gameOver" *ngIf="playerTurn">Attack!!</button>
+                <button (click)="battleTurn()" [disabled]="gameOver" *ngIf="!playerTurn">Watch out!!</button>
+            </div>
+                <h4 *ngIf="gameOver">Oops.. You died!</h4>
+        </div>
+    </div>
+</div>

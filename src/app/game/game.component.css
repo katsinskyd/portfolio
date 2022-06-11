@@ -1,0 +1,12 @@
+.stats {
+    float: left;
+}
+
+.battle {
+    float: left;
+    padding-left: 100px;
+}
+
+.inner-container {
+    padding-top: 20px;
+}

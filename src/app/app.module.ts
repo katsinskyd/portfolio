@@ -10,6 +10,7 @@ import { GalleryComponent } from './portfolio/gallery/gallery.component';
 import { CommissionsComponent } from './portfolio/commissions/commissions.component';
 import { ConnectComponent } from './connect/connect.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PortfolioComponent,
     GalleryComponent,
     CommissionsComponent,
-    ConnectComponent
+    ConnectComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
