@@ -150,16 +150,19 @@ export class GameComponent implements OnInit, AfterViewChecked {
     let prevHp = this.maxHP;
     let prevStr = this.str;
     let prevDef = this.def;
+
     this.msg.push('Level up!')
     this.lvl++;
     this.expRemaining = this.lvl*10;
-    this.hp = this.maxHP + (Math.floor(Math.random() * 10 * this.lvl))
+
+    this.hp = this.maxHP + (Math.floor(Math.random() * 10 * this.lvl + 1))
+    this.maxHP = this.hp;
     this.str = this.str + (Math.floor(Math.random() * 10 + 1))
     this.def = this.def + (Math.floor(Math.random() * 10 + 1))
+
     this.msg.push(`HP increased by ${this.maxHP - prevHp}`)
     this.msg.push(`Attack increased by ${this.str - prevStr}`)
     this.msg.push(`Defense increased by ${this.def - prevDef}`)
-    this.maxHP = this.hp;
   }
 
   restart() {
