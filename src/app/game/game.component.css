@@ -10,3 +10,15 @@
 .inner-container {
     padding-top: 20px;
 }
+
+.messageLog {
+    float:right;
+    padding-left: 100px;
+}
+
+#messages {
+    height: 250px;
+    width: 300px;
+    overflow: scroll;
+    overflow-x:hidden;
+}

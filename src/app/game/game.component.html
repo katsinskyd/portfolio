@@ -1,3 +1,10 @@
+<script>
+    document.getElementById('button').addEventListener('click', function(){
+    var element = document.getElementById('messages');
+    element.scrollTop = element.scrollHeight;
+    });
+</script>
+
 <div class="inner-container">
     <div *ngIf="!gameStart">
         hello, here is a little game for you to... play.<br>
@@ -10,23 +17,26 @@
         <button (click)="rollStats()" [disabled]="reroll==0">Roll</button><br><br>
 
         Attack: {{ str }}<br>
-        Defense: {{ def }}<br><br>
+        Defense: {{ def }}<br>
+        Starting potions: {{ potions }}<br>
 
         <button (click)="this.gameStart = true;" [disabled]="reroll==5">Start</button>
     </div>
 
     <div *ngIf="gameStart">
         <div class="stats">
+            Score: {{ score }}<br><br>
             Level <strong>{{ lvl }}</strong><br>
             Points until next level: {{ expRemaining }}<br>
-            Health: {{ hp }}<br>
+            Health: {{ hp }} / {{ maxHP }}<br>
             Attack: {{ str }}<br>
             Defense: {{ def }}<br><br>
+            Potions held: {{potions}}<br>
+            <button (click)="usePotion()" [disabled]="gameOver || hp == maxHP || potions < 1 || !playerTurn">Use a Potion</button><br><br>
             <button (click)="restart()" [disabled]="!gameOver">Restart</button><br>
         </div>
 
         <div class="battle">
-            Score: {{ score }}<br>
             <div *ngIf="!battleTime">
                 You encounter an <strong>enemy!!</strong><br>
                 <button (click)="generateEnemy()" [disabled]="gameOver">Start a Fight!!</button>
@@ -34,13 +44,24 @@
             <div *ngIf="battleTime">
                 The enemy has {{ enemyHP }} health remaining...<br>
                 Enemy Attack: {{ enemyStr }}<br>
-                Enemy Defense: {{ enemyDef }}<br>
+                Enemy Defense: {{ enemyDef }}<br><br>
+
                 <span *ngIf="playerTurn">You attack the enemy!</span>
-                <span *ngIf="!playerTurn">The enemy attacks!</span>
-                <br><button (click)="battleTurn()" [disabled]="gameOver" *ngIf="playerTurn">Attack!!</button>
+                <span *ngIf="!playerTurn">The enemy attacks!</span><br><br>
+
+                <button id="button" (click)="battleTurn()" [disabled]="gameOver" *ngIf="playerTurn">Attack!!</button>
                 <button (click)="battleTurn()" [disabled]="gameOver" *ngIf="!playerTurn">Watch out!!</button>
             </div>
                 <h4 *ngIf="gameOver">Oops.. You died!</h4>
+        </div>
+
+        <div class="messageLog">
+            Game Log
+            <div #messages id="messages">
+                <ul>
+                    <li *ngFor="let msg of msg">{{msg}}</li>
+                </ul> 
+            </div>
         </div>
     </div>
 </div>
