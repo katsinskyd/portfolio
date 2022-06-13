@@ -9,13 +9,15 @@
     <div *ngIf="!gameStart">
         hello, here is a little game for you to... play.<br>
         it's pretty bad and not really fun, I'm just messing around here.<br>
-        stats will be randomly generated (1 - 10) when you click roll.<br>
+        stats will be randomly generated when you click roll.<br>
+        you will be given 0 - 3 potions to start, maybe they'll help, maybe not.<br>
         you are allowed to roll <strong>{{ reroll }}</strong> more time<span *ngIf="reroll>1">s</span>.<br>
         press start when you are satisfied with your stats.<br>
         if you have no rolls left, the game will automatically begin.<br><br>
 
         <button (click)="rollStats()" [disabled]="reroll==0">Roll</button><br><br>
 
+        Health: {{ maxHP }}<br>
         Attack: {{ str }}<br>
         Defense: {{ def }}<br>
         Starting potions: {{ potions }}<br>

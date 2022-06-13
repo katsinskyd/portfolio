@@ -14,8 +14,8 @@ export class GameComponent implements OnInit, AfterViewChecked {
   lvl = 1;
   str = 0;
   def = 0;
-  hp = 10;
-  maxHP = 10;
+  hp = 0;
+  maxHP = 0;
   expRemaining = 10;
 
   battleExp = 0;
@@ -51,6 +51,8 @@ export class GameComponent implements OnInit, AfterViewChecked {
 
   rollStats() {
     this.reroll--;
+    this.maxHP = Math.floor(Math.random() * 10 + 10);
+    this.hp = this.maxHP;
     this.str = Math.floor(Math.random() * 10 + 1);
     this.def = Math.floor(Math.random() * 10 + 1);
     this.potions = Math.floor(Math.random() * 3);
@@ -118,7 +120,7 @@ export class GameComponent implements OnInit, AfterViewChecked {
 
   usePotion() {
     this.potions--;
-    let recoveredHP = Math.floor(Math.random() * 10 + 5);
+    let recoveredHP = this.maxHP / 3;
     this.hp += recoveredHP;
     if (this.maxHP < this.hp) {
       this.hp = this.maxHP;
