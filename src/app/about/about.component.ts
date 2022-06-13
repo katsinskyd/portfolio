@@ -7,9 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  path: string = "src\assets\images\profile.png";
-  alttext: string="it's me!"
-
   constructor() { }
 
   ngOnInit(): void {
