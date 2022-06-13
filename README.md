@@ -7,5 +7,5 @@ The site is currently deployed [here](https://katsinskyd.github.io/portfolio).
 ### Things I'm Working On  
 
 - I'm aware that the profile photo I've added isn't displaying correctly (it does locally!)  
-- For the "RNG RPG" I need to figure out the enemy level scaling and add some more interesting actions to spice things up.  
+- For "RNG RPG" I want to add some more events the player can experience (not sure what yet)    
 - I'm going to end up changing the entire design of the site at some point, so I've been looking for inspiration and sketching wireframes.  
